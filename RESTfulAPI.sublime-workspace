@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"ver",
+				"verified"
+			],
+			[
+				"is",
+				"isVerified〔function〕"
+			],
+			[
 				"U",
 				"UNVERIFIED_USER"
 			],
@@ -102,22 +110,56 @@
 			}
 		},
 		{
-			"contents": "<?php\n\nnamespace App\\Http\\Controllers\\User;\n\nuse App\\User;\nuse Illuminate\\Http\\Request;\nuse App\\Http\\Controllers\\Controller;\n\nclass UserController extends Controller\n{\n    /**\n     * Display a listing of the resource.\n     *\n     * @return \\Illuminate\\Http\\Response\n     */\n    public function index()\n    {\n        //\n        $users = User::all();\n\n        return response()->json(['data'=> $users], 200);\n    }\n\n    /**\n     * Show the form for creating a new resource.\n     *\n     * @return \\Illuminate\\Http\\Response\n     */\n    public function update(Request $request, $id)\n    {\n        //\n        $user = User::findOrFail($id);\n\n        $rules = [\n            'email' => 'email|unique:users,email,'. $user->id,\n            'password' => 'min:6|confirmed',\n            'admin' => 'in:' . User::ADMIN_USER . ',' . User::REGULAR_USER,\n        ];\n\n        $this->validate($request, $rules);\n\n        if($request->has('name')){\n            $user->name = $request\n        }\n    }\n\n    /**\n     * Store a newly created resource in storage.\n     *\n     * @param  \\Illuminate\\Http\\Request  $request\n     * @return \\Illuminate\\Http\\Response\n     */\n    public function store(Request $request)\n    {\n        //\n        $rules = [\n            'name' => 'required',\n            'email' => 'required|email|unique:users',\n            'password' => 'required|min:6|confirmed',\n        ];\n\n        $this->validate($request, $rules);\n\n        $data = $request->all();\n        $data['password'] = bcrypt($request->password);\n        $data['verified'] = User::UNVERIFIED_USER;\n        $data['verification_token'] = User::generateVerificationCode();\n        $data['admin'] = User::REGULAR_USER;\n\n        $user = User::create($data);\n\n        return response()->json(['data'=> $user], 201);\n    }\n\n    /**\n     * Display the specified resource.\n     *\n     * @param  int  $id\n     * @return \\Illuminate\\Http\\Response\n     */\n    public function show($id)\n    {\n        //\n        $user = User::findOrFail($id);\n\n        return response()->json(['data'=> $user], 200);\n    }\n  \n    /**\n     * Remove the specified resource from storage.\n     *\n     * @param  int  $id\n     * @return \\Illuminate\\Http\\Response\n     */\n    public function destroy($id)\n    {\n        //\n    }\n}\n",
-			"file": "app/Http/Controllers/User/UserController.php",
-			"file_size": 2177,
-			"file_write_time": 132283312847613940,
+			"file": "app/Http/Controllers/Seller/SellerController.php",
 			"settings":
 			{
-				"buffer_size": 2258,
+				"buffer_size": 704,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/User.php",
+			"file": "app/Http/Controllers/User/UserController.php",
 			"settings":
 			{
-				"buffer_size": 1300,
+				"buffer_size": 3143,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Http/Controllers/Buyer/BuyerController.php",
+			"settings":
+			{
+				"buffer_size": 712,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Traits/ApiResponser.php",
+			"settings":
+			{
+				"buffer_size": 610,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/Http/Controllers/Category/CategoryController.php",
+			"settings":
+			{
+				"buffer_size": 1563,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Http/Controllers/Product/ProductController.php",
+			"settings":
+			{
+				"buffer_size": 1561,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		}
@@ -193,8 +235,14 @@
 		"/D/Luanvan/htdocs/RestfulAPI/app/Exceptions",
 		"/D/Luanvan/htdocs/RestfulAPI/app/Http",
 		"/D/Luanvan/htdocs/RestfulAPI/app/Http/Controllers",
+		"/D/Luanvan/htdocs/RestfulAPI/app/Http/Controllers/Buyer",
+		"/D/Luanvan/htdocs/RestfulAPI/app/Http/Controllers/Category",
+		"/D/Luanvan/htdocs/RestfulAPI/app/Http/Controllers/Product",
+		"/D/Luanvan/htdocs/RestfulAPI/app/Http/Controllers/Seller",
+		"/D/Luanvan/htdocs/RestfulAPI/app/Http/Controllers/Transaction",
 		"/D/Luanvan/htdocs/RestfulAPI/app/Http/Controllers/User",
 		"/D/Luanvan/htdocs/RestfulAPI/app/Providers",
+		"/D/Luanvan/htdocs/RestfulAPI/app/Traits",
 		"/D/Luanvan/htdocs/RestfulAPI/database",
 		"/D/Luanvan/htdocs/RestfulAPI/database/factories",
 		"/D/Luanvan/htdocs/RestfulAPI/database/migrations",
@@ -205,17 +253,21 @@
 	],
 	"file_history":
 	[
+		"/D/Luanvan/htdocs/RestfulAPI/app/User.php",
+		"/D/Luanvan/htdocs/RestfulAPI/app/Http/Controllers/ApiController.php",
+		"/D/Luanvan/htdocs/RestfulAPI/app/Http/Controllers/Transaction/TransactionController.php",
+		"/D/Luanvan/htdocs/RestfulAPI/app/Http/Controllers/User/UserController.php",
+		"/D/Luanvan/htdocs/RestfulAPI/database/seeds/DatabaseSeeder.php",
+		"/D/Luanvan/htdocs/RestfulAPI/database/factories/UserFactory.php",
+		"/D/Luanvan/htdocs/RestfulAPI/app/Http/Controllers/Buyer/BuyerController.php",
 		"/D/Luanvan/htdocs/RestfulAPI/Homestead.yaml",
 		"/D/Luanvan/htdocs/API_luanvan/routes/web.php",
 		"/D/Luanvan/htdocs/RestfulAPI/app/Buyer.php",
 		"/D/Luanvan/htdocs/RestfulAPI/database/migrations/2014_10_12_000000_create_users_table.php",
-		"/D/Luanvan/htdocs/RestfulAPI/database/factories/UserFactory.php",
 		"/D/Luanvan/htdocs/RestfulAPI/app/Product.php",
-		"/D/Luanvan/htdocs/RestfulAPI/app/User.php",
 		"/D/Luanvan/htdocs/RestfulAPI/config/database.php",
 		"/C/Windows/System32/drivers/etc/hosts",
 		"/D/Luanvan/htdocs/RestfulAPI/database/migrations/2020_03_10_013836_create_products_table.php",
-		"/D/Luanvan/htdocs/RestfulAPI/database/seeds/DatabaseSeeder.php",
 		"/D/Luanvan/htdocs/RestfulAPI/database/migrations/2020_03_10_013957_create_transactions_table.php",
 		"/D/Luanvan/htdocs/RestfulAPI/database/migrations/2020_03_10_031459_category_product_table.php",
 		"/D/Luanvan/htdocs/RestfulAPI/routes/web.php",
@@ -343,7 +395,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -372,10 +424,10 @@
 							"syntax": "Packages/PHP/PHP.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 540.0,
+						"translation.y": 468.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -404,29 +456,29 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "app/Http/Controllers/User/UserController.php",
+					"file": "app/Http/Controllers/Seller/SellerController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2258,
+						"buffer_size": 704,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								963,
-								963
+								655,
+								655
 							]
 						],
 						"settings":
 						{
-							"SL.24.region_keys":
+							"SL.19.region_keys":
 							[
 							],
 							"auto_complete": false,
@@ -435,40 +487,170 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 541.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "app/User.php",
-					"semi_transient": true,
+					"file": "app/Http/Controllers/User/UserController.php",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1300,
+						"buffer_size": 3143,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								621,
-								626
+								1705,
+								1705
 							]
 						],
 						"settings":
 						{
+							"SL.34.region_keys":
+							[
+							],
+							"auto_complete": false,
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 216.0,
+						"translation.y": 738.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/Http/Controllers/Buyer/BuyerController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 712,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								427,
+								427
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/Traits/ApiResponser.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 610,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								241,
+								254
+							]
+						],
+						"settings":
+						{
+							"SL.30.region_keys":
+							[
+							],
+							"auto_complete": false,
+							"open_with_edit": true,
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/Http/Controllers/Category/CategoryController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1563,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								217,
+								217
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1188.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/Http/Controllers/Product/ProductController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1561,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								222,
+								222
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
 					"type": "text"
 				}
 			]
