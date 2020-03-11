@@ -1,0 +1,567 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"U",
+				"UNVERIFIED_USER"
+			],
+			[
+				"p",
+				"pluck〔function〕"
+			],
+			[
+				"mt",
+				"mt_rand"
+			],
+			[
+				"has",
+				"hasMany〔function〕"
+			],
+			[
+				"belo",
+				"belongsTo〔function〕"
+			],
+			[
+				"belong",
+				"belongsToMany〔function〕"
+			],
+			[
+				"AL",
+				"AVAILABLE_VALUE〔constant〕"
+			],
+			[
+				"u",
+				"User〔class〕"
+			],
+			[
+				"au",
+				"$authSer〔variable〕"
+			],
+			[
+				"User",
+				"UserService〔class〕"
+			],
+			[
+				"user",
+				"userService"
+			],
+			[
+				"Tra",
+				"UserTransformer〔namespace〕"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"Wt",
+				"WeatherStats"
+			],
+			[
+				"Trans",
+				"TransformerAbstract〔class〕"
+			],
+			[
+				"query",
+				"queryService"
+			],
+			[
+				"q",
+				"quzzleClient"
+			],
+			[
+				"Clin",
+				"Client"
+			],
+			[
+				"head",
+				"header"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "routes/api.php",
+			"settings":
+			{
+				"buffer_size": 1058,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "routes/web.php",
+			"settings":
+			{
+				"buffer_size": 453,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "<?php\n\nnamespace App\\Http\\Controllers\\User;\n\nuse App\\User;\nuse Illuminate\\Http\\Request;\nuse App\\Http\\Controllers\\Controller;\n\nclass UserController extends Controller\n{\n    /**\n     * Display a listing of the resource.\n     *\n     * @return \\Illuminate\\Http\\Response\n     */\n    public function index()\n    {\n        //\n        $users = User::all();\n\n        return response()->json(['data'=> $users], 200);\n    }\n\n    /**\n     * Show the form for creating a new resource.\n     *\n     * @return \\Illuminate\\Http\\Response\n     */\n    public function update(Request $request, $id)\n    {\n        //\n        $user = User::findOrFail($id);\n\n        $rules = [\n            'email' => 'email|unique:users,email,'. $user->id,\n            'password' => 'min:6|confirmed',\n            'admin' => 'in:' . User::ADMIN_USER . ',' . User::REGULAR_USER,\n        ];\n\n        $this->validate($request, $rules);\n\n        if($request->has('name')){\n            $user->name = $request\n        }\n    }\n\n    /**\n     * Store a newly created resource in storage.\n     *\n     * @param  \\Illuminate\\Http\\Request  $request\n     * @return \\Illuminate\\Http\\Response\n     */\n    public function store(Request $request)\n    {\n        //\n        $rules = [\n            'name' => 'required',\n            'email' => 'required|email|unique:users',\n            'password' => 'required|min:6|confirmed',\n        ];\n\n        $this->validate($request, $rules);\n\n        $data = $request->all();\n        $data['password'] = bcrypt($request->password);\n        $data['verified'] = User::UNVERIFIED_USER;\n        $data['verification_token'] = User::generateVerificationCode();\n        $data['admin'] = User::REGULAR_USER;\n\n        $user = User::create($data);\n\n        return response()->json(['data'=> $user], 201);\n    }\n\n    /**\n     * Display the specified resource.\n     *\n     * @param  int  $id\n     * @return \\Illuminate\\Http\\Response\n     */\n    public function show($id)\n    {\n        //\n        $user = User::findOrFail($id);\n\n        return response()->json(['data'=> $user], 200);\n    }\n  \n    /**\n     * Remove the specified resource from storage.\n     *\n     * @param  int  $id\n     * @return \\Illuminate\\Http\\Response\n     */\n    public function destroy($id)\n    {\n        //\n    }\n}\n",
+			"file": "app/Http/Controllers/User/UserController.php",
+			"file_size": 2177,
+			"file_write_time": 132283312847613940,
+			"settings":
+			{
+				"buffer_size": 2258,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/User.php",
+			"settings":
+			{
+				"buffer_size": 1300,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"insat",
+				"Package Control: Install Package"
+			],
+			[
+				"contro",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Con",
+				"Preferences: Package Control Settings – Default"
+			],
+			[
+				"",
+				"Build: Cancel"
+			],
+			[
+				"package con",
+				"Preferences: Package Control Settings – Default"
+			],
+			[
+				"Package con",
+				"Preferences: Package Control Settings – User"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control:",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 143.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package';ipp = sublime.installed_packages_path(); urllib.request.install_opener( 'http://packagecontrol.io/' + pf.replace(' ','%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Errorvalidating download (got %s instead of %s), please try manual install' %(dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package';"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/Luanvan/htdocs/RestfulAPI",
+		"/D/Luanvan/htdocs/RestfulAPI/app",
+		"/D/Luanvan/htdocs/RestfulAPI/app/Exceptions",
+		"/D/Luanvan/htdocs/RestfulAPI/app/Http",
+		"/D/Luanvan/htdocs/RestfulAPI/app/Http/Controllers",
+		"/D/Luanvan/htdocs/RestfulAPI/app/Http/Controllers/User",
+		"/D/Luanvan/htdocs/RestfulAPI/app/Providers",
+		"/D/Luanvan/htdocs/RestfulAPI/database",
+		"/D/Luanvan/htdocs/RestfulAPI/database/factories",
+		"/D/Luanvan/htdocs/RestfulAPI/database/migrations",
+		"/D/Luanvan/htdocs/RestfulAPI/database/seeds",
+		"/D/Luanvan/htdocs/RestfulAPI/public",
+		"/D/Luanvan/htdocs/RestfulAPI/public/img",
+		"/D/Luanvan/htdocs/RestfulAPI/routes"
+	],
+	"file_history":
+	[
+		"/D/Luanvan/htdocs/RestfulAPI/Homestead.yaml",
+		"/D/Luanvan/htdocs/API_luanvan/routes/web.php",
+		"/D/Luanvan/htdocs/RestfulAPI/app/Buyer.php",
+		"/D/Luanvan/htdocs/RestfulAPI/database/migrations/2014_10_12_000000_create_users_table.php",
+		"/D/Luanvan/htdocs/RestfulAPI/database/factories/UserFactory.php",
+		"/D/Luanvan/htdocs/RestfulAPI/app/Product.php",
+		"/D/Luanvan/htdocs/RestfulAPI/app/User.php",
+		"/D/Luanvan/htdocs/RestfulAPI/config/database.php",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/D/Luanvan/htdocs/RestfulAPI/database/migrations/2020_03_10_013836_create_products_table.php",
+		"/D/Luanvan/htdocs/RestfulAPI/database/seeds/DatabaseSeeder.php",
+		"/D/Luanvan/htdocs/RestfulAPI/database/migrations/2020_03_10_013957_create_transactions_table.php",
+		"/D/Luanvan/htdocs/RestfulAPI/database/migrations/2020_03_10_031459_category_product_table.php",
+		"/D/Luanvan/htdocs/RestfulAPI/routes/web.php",
+		"/D/Luanvan/htdocs/RestfulAPI/app/Transaction.php",
+		"/D/Luanvan/htdocs/RestfulAPI/database/migrations/2020_03_10_013808_create_categories_table.php",
+		"/D/Luanvan/htdocs/RestfulAPI/app/Providers/AppServiceProvider.php",
+		"/D/Luanvan/htdocs/RestfulAPI/app/Category.php",
+		"/D/Luanvan/htdocs/RestfulAPI/app/Seller.php",
+		"/D/Luanvan/htdocs/RestfulAPI/app/Http/Controllers/Product/BuyerController.php",
+		"/D/Luanvan/htdocs/RestfulAPI/app/Providers/RouteServiceProvider.php",
+		"/D/Luanvan/htdocs/RestfulAPI/.env",
+		"/C/Users/ASUS/AppData/Roaming/Sublime Text 3/Packages/User/PHP Companion.sublime-settings",
+		"/C/Users/ASUS/AppData/Roaming/Sublime Text 3/Packages/PHP Companion/PHP Companion.sublime-settings",
+		"/D/Luanvan/htdocs/RestfulAPI/app/Http/Controllers/Controller.php",
+		"/C/Users/ASUS/AppData/Roaming/Sublime Text 3/Installed Packages/Package Control.sublime-package",
+		"/C/Users/ASUS/AppData/Roaming/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
+		"/C/Users/ASUS/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/D/Luanvan/htdocs/API_luanvan/app/Model/Auth/Role.php",
+		"/D/Luanvan/htdocs/API_luanvan/config/laratrust.php",
+		"/D/Luanvan/htdocs/API_luanvan/database/seeds/PermissionSeeder.php",
+		"/D/Luanvan/htdocs/API_luanvan/database/seeds/RoleSeeder.php",
+		"/D/Luanvan/htdocs/API_luanvan/app/Model/Auth/Permission.php",
+		"/D/Luanvan/htdocs/API_luanvan/app/Listeners/PaginatorListener.php",
+		"/D/Luanvan/htdocs/API_luanvan/vendor/santigarcor/laratrust/src/Traits/LaratrustHasEvents.php",
+		"/D/Luanvan/htdocs/Section3/database/seeds/RoleSeeder.php",
+		"/D/Luanvan/htdocs/Section3/database/seeds/DatabaseSeeder.php",
+		"/D/Luanvan/htdocs/Section3/database/seeds/PermissionSeeder.php",
+		"/D/Luanvan/htdocs/API_luanvan/routes/api.php",
+		"/D/Luanvan/htdocs/API_luanvan/app/Services/UserService.php",
+		"/D/Luanvan/htdocs/API_luanvan/app/Http/Controllers/UserController.php",
+		"/D/Luanvan/htdocs/API_luanvan/app/Model/User.php",
+		"/D/Luanvan/htdocs/API_luanvan/config/app.php",
+		"/D/Luanvan/htdocs/API_luanvan/database/seeds/UserSeeder.php",
+		"/D/Luanvan/htdocs/API_luanvan/database/factories/UserFactory.php",
+		"/D/Luanvan/htdocs/API_luanvan/config/api.php",
+		"/E/DoanThanhDuy/Building-RESTful-API-with-Laravel-master/Section3/config/api.php",
+		"/D/Luanvan/htdocs/Section3/app/Http/Controllers/Auth/AuthController.php",
+		"/D/Luanvan/htdocs/Section3/database/factories/UserFactory.php",
+		"/D/Luanvan/htdocs/Section3/routes/api.php",
+		"/D/Luanvan/htdocs/API_luanvan/config/auth.php",
+		"/D/Luanvan/htdocs/Section3/app/Http/Controllers/UserController.php",
+		"/D/Luanvan/htdocs/Section3/app/Models/User.php",
+		"/D/Luanvan/htdocs/Section3/config/api.php",
+		"/D/Luanvan/htdocs/API_luanvan/app/Services/DuyService.php",
+		"/D/Luanvan/htdocs/API_luanvan/app/Http/Requests/UserCreateRequest.php",
+		"/D/Luanvan/htdocs/API_luanvan/app/Http/Services/UserService.php",
+		"/D/Luanvan/htdocs/Section3/app/Services/UserService.php",
+		"/D/Luanvan/htdocs/API_luanvan/database/seeds/DatabaseSeeder.php",
+		"/D/Luanvan/htdocs/API_luanvan/app/Http/Requests/UserUpdateRequest.php",
+		"/D/Luanvan/htdocs/API_luanvan/app/Http/Transformer/UserTransformer.php",
+		"/D/Luanvan/htdocs/API_luanvan/app/Http/Controllers/ServerController.php",
+		"/D/Luanvan/htdocs/API_luanvan/app/Services/QueryService.php",
+		"/D/Luanvan/htdocs/API_luanvan/app/Console/Commands/QueryWeatherStats.php",
+		"/D/Luanvan/htdocs/API_luanvan/app/Http/Controllers/QueryController.php",
+		"/D/Luanvan/htdocs/API_luanvan/app/Http/Transformer/WeatherStatTransformer.php",
+		"/D/Luanvan/htdocs/API_luanvan/app/Transformer/WeatherStatTransformer.php",
+		"/D/Luanvan/htdocs/Section2/routes/api.php",
+		"/D/Luanvan/htdocs/Section2/index.php",
+		"/D/Luanvan/htdocs/Section2/.env",
+		"/D/Luanvan/htdocs/Section2/.env.example",
+		"/D/Luanvan/htdocs/Section2/config/database.php",
+		"/E/DoanThanhDuy/Building-RESTful-API-with-Laravel-master/Section2/app/Http/Transformers/WeatherStatTransformer.php",
+		"/D/Luanvan/htdocs/API_luanvan/app/Http/Controllers/Duy.php",
+		"/E/DoanThanhDuy/Building-RESTful-API-with-Laravel-master/Section2/app/Http/Controllers/QueryController.php",
+		"/E/DoanThanhDuy/Building-RESTful-API-with-Laravel-master/Section2/routes/api.php",
+		"/D/Luanvan/htdocs/API_luanvan/database/seeds/CitySeeder.php",
+		"/D/Luanvan/htdocs/API_luanvan/app/Services/OpenWeatherMapService.php",
+		"/D/Luanvan/htdocs/API_luanvan/app/Http/Kernel.php",
+		"/D/Luanvan/htdocs/API_luanvan/app/Model/WeatherStats.php",
+		"/D/Luanvan/htdocs/API_luanvan/app/Services/ApixuService.php",
+		"/D/Luanvan/htdocs/API_luanvan/composer.json",
+		"/D/Luanvan/htdocs/API_luanvan/app/Console/Commands/query.php",
+		"/D/Luanvan/htdocs/API_luanvan/app/Service/ApixuService.php",
+		"/D/Luanvan/htdocs/API_luanvan/app/Model/City.php",
+		"/D/xampp/htdocs/NghienCuu/app/Product.php",
+		"/D/xampp/htdocs/NghienCuu/app/ItemsDetail.php",
+		"/D/xampp/htdocs/NghienCuu/app/GiftPosting.php",
+		"/D/xampp/htdocs/NghienCuu/app/AskingPosting.php",
+		"/D/xampp/htdocs/NghienCuu/app/Category.php",
+		"/D/xampp/htdocs/NghienCuu/app/Brand.php",
+		"/D/xampp/htdocs/NghienCuu/app/User.php",
+		"/D/xampp/htdocs/NghienCuu/app/QTV.php",
+		"/D/xampp/htdocs/NghienCuu/app/ProductForGive.php",
+		"/D/xampp/htdocs/NghienCuu/app/ImageProduct.php",
+		"/D/xampp/htdocs/NghienCuu/app/Image_Product.php",
+		"/D/xampp/htdocs/NghienCuu/resources/views/front-end/product.blade.php",
+		"/D/xampp/htdocs/NghienCuu/resources/views/front-end/cart.blade.php",
+		"/D/xampp/htdocs/NghienCuu/routes/web.php",
+		"/D/xampp/htdocs/NghienCuu/public/source/cart.html",
+		"/D/xampp/htdocs/NghienCuu/app/Http/Controllers/PageController.php",
+		"/D/xampp/htdocs/NghienCuu/public/source/single-product.html",
+		"/D/xampp/htdocs/NghienCuu/resources/views/front-end/product-detail.blade.php",
+		"/D/xampp/htdocs/NghienCuu/public/source/shop.html"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "routes/api.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1058,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								840,
+								840
+							]
+						],
+						"settings":
+						{
+							"SL.13.region_keys":
+							[
+							],
+							"auto_complete": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 540.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "routes/web.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 453,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								453,
+								453
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/Http/Controllers/User/UserController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2258,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								963,
+								963
+							]
+						],
+						"settings":
+						{
+							"SL.24.region_keys":
+							[
+							],
+							"auto_complete": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 541.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/User.php",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1300,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								621,
+								626
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 216.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 40.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.SublimeLinter":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.xdebug":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "RESTfulAPI.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 257.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
