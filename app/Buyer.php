@@ -9,6 +9,7 @@ use App\Scopes\BuyerScope;
 class Buyer extends User
 {
     //
+
     protected static function boot()
     {
     	parent::boot();

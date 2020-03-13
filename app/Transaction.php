@@ -18,6 +18,9 @@ class Transaction extends Model
     	'buyer_id',
     	'product_id',
     ];
+    protected $hidden = [
+        'pivot'
+    ];
     public function buyer()
     {
     	return $this->belongsTo(Buyer::class);
