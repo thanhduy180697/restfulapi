@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"with",
+				"withInput"
+			],
+			[
 				"transf",
 				"transformedError"
 			],
@@ -164,28 +168,37 @@
 	"buffers":
 	[
 		{
-			"file": "app/Http/Middleware/TransformInput.php",
+			"file": "app/User.php",
 			"settings":
 			{
-				"buffer_size": 1204,
+				"buffer_size": 1873,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "composer.json",
+			"file": "app/Providers/AuthServiceProvider.php",
 			"settings":
 			{
-				"buffer_size": 1698,
+				"buffer_size": 791,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "package.json",
+			"file": "app/Http/Controllers/Auth/RegisterController.php",
 			"settings":
 			{
-				"buffer_size": 1172,
+				"buffer_size": 2046,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "config/auth.php",
+			"settings":
+			{
+				"buffer_size": 3283,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -262,32 +275,34 @@
 	"expanded_folders":
 	[
 		"/D/Luanvan/htdocs/RestfulAPI",
-		"/D/Luanvan/htdocs/RestfulAPI/app",
-		"/D/Luanvan/htdocs/RestfulAPI/app/Exceptions",
-		"/D/Luanvan/htdocs/RestfulAPI/app/Http",
-		"/D/Luanvan/htdocs/RestfulAPI/app/Http/Controllers",
-		"/D/Luanvan/htdocs/RestfulAPI/app/Http/Controllers/Category",
-		"/D/Luanvan/htdocs/RestfulAPI/app/Http/Controllers/Product",
-		"/D/Luanvan/htdocs/RestfulAPI/app/Http/Controllers/Transaction",
-		"/D/Luanvan/htdocs/RestfulAPI/app/Http/Controllers/User",
-		"/D/Luanvan/htdocs/RestfulAPI/app/Http/Middleware",
-		"/D/Luanvan/htdocs/RestfulAPI/app/Mail",
-		"/D/Luanvan/htdocs/RestfulAPI/app/Providers",
-		"/D/Luanvan/htdocs/RestfulAPI/app/Scopes",
-		"/D/Luanvan/htdocs/RestfulAPI/app/Traits",
-		"/D/Luanvan/htdocs/RestfulAPI/app/Transformers",
 		"/D/Luanvan/htdocs/RestfulAPI/config",
 		"/D/Luanvan/htdocs/RestfulAPI/resources",
 		"/D/Luanvan/htdocs/RestfulAPI/resources/views",
+		"/D/Luanvan/htdocs/RestfulAPI/resources/views/auth",
 		"/D/Luanvan/htdocs/RestfulAPI/resources/views/emails",
-		"/D/Luanvan/htdocs/RestfulAPI/storage",
-		"/D/Luanvan/htdocs/RestfulAPI/storage/logs",
-		"/D/Luanvan/htdocs/RestfulAPI/tests",
+		"/D/Luanvan/htdocs/RestfulAPI/resources/views/layouts",
+		"/D/Luanvan/htdocs/RestfulAPI/routes",
 		"/D/Luanvan/htdocs/RestfulAPI/vendor",
-		"/D/Luanvan/htdocs/RestfulAPI/vendor/fzaninotto"
+		"/D/Luanvan/htdocs/RestfulAPI/vendor/fzaninotto",
+		"/D/Luanvan/htdocs/RestfulAPI/vendor/laravel",
+		"/D/Luanvan/htdocs/RestfulAPI/vendor/laravel/passport"
 	],
 	"file_history":
 	[
+		"/D/Luanvan/htdocs/API_luanvan/composer.json",
+		"/D/Luanvan/htdocs/RestfulAPI/app/Http/Middleware/TransformInput.php",
+		"/D/Luanvan/htdocs/RestfulAPI/composer.json",
+		"/D/Luanvan/htdocs/RestfulAPI/vendor/phpunit/phpunit/tests/_files/ClassWithAllPossibleReturnTypes.php",
+		"/D/Luanvan/htdocs/API_luanvan/vendor/laravel/passport/config/passport.php",
+		"/D/Luanvan/htdocs/RestfulAPI/package.json",
+		"/D/Luanvan/htdocs/RestfulAPI/routes/web.php",
+		"/D/Luanvan/htdocs/RestfulAPI/config/app.php",
+		"/D/Luanvan/htdocs/RestfulAPI/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+		"/D/Luanvan/htdocs/RestfulAPI/app/Exceptions/Handler.php",
+		"/D/Luanvan/htdocs/RestfulAPI/resources/views/welcome.blade.php",
+		"/D/Luanvan/htdocs/RestfulAPI/resources/views/layouts/app.blade.php",
+		"/D/Luanvan/htdocs/RestfulAPI/app/Http/Controllers/Auth/RegisterController.php",
+		"/D/Luanvan/htdocs/RestfulAPI/vendor/symfony/routing/Router.php",
 		"/D/Luanvan/htdocs/RestfulAPI/node_modules/cross-env/dist/bin/cross-env.js",
 		"/D/Luanvan/htdocs/RestfulAPI/app/Http/Controllers/ApiController.php",
 		"/D/Luanvan/htdocs/RestfulAPI/app/Transformers/UserTransformer.php",
@@ -311,7 +326,6 @@
 		"/D/Luanvan/htdocs/RestfulAPI/app/Product.php",
 		"/D/Luanvan/htdocs/RestfulAPI/app/Category.php",
 		"/D/Luanvan/htdocs/RestfulAPI/app/Buyer.php",
-		"/D/Luanvan/htdocs/RestfulAPI/config/app.php",
 		"/D/Luanvan/htdocs/RestfulAPI/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php",
 		"/D/Luanvan/htdocs/RestfulAPI/.env",
 		"/D/Luanvan/htdocs/RestfulAPI/config/mail.php",
@@ -355,9 +369,7 @@
 		"/D/Luanvan/htdocs/RestfulAPI/database/migrations/2020_03_10_013808_create_categories_table.php",
 		"/D/Luanvan/htdocs/RestfulAPI/database/migrations/2020_03_10_013836_create_products_table.php",
 		"/D/Luanvan/htdocs/RestfulAPI/database/migrations/2020_03_10_013957_create_transactions_table.php",
-		"/D/Luanvan/htdocs/RestfulAPI/routes/web.php",
 		"/D/Luanvan/htdocs/RestfulAPI/app/Scopes/BuyerScope.php",
-		"/D/Luanvan/htdocs/RestfulAPI/app/Exceptions/Handler.php",
 		"/D/Luanvan/htdocs/RestfulAPI/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php",
 		"/D/Luanvan/htdocs/RestfulAPI/vendor/symfony/http-kernel/Exception/NotFoundHttpException.php",
 		"/D/Luanvan/htdocs/RestfulAPI/vendor/symfony/http-foundation/Exception/SuspiciousOperationException.php",
@@ -404,18 +416,7 @@
 		"/D/Luanvan/htdocs/Section3/app/Http/Controllers/UserController.php",
 		"/D/Luanvan/htdocs/Section3/app/Models/User.php",
 		"/D/Luanvan/htdocs/Section3/config/api.php",
-		"/D/Luanvan/htdocs/API_luanvan/app/Services/DuyService.php",
-		"/D/Luanvan/htdocs/API_luanvan/app/Http/Requests/UserCreateRequest.php",
-		"/D/Luanvan/htdocs/API_luanvan/app/Http/Services/UserService.php",
-		"/D/Luanvan/htdocs/Section3/app/Services/UserService.php",
-		"/D/Luanvan/htdocs/API_luanvan/database/seeds/DatabaseSeeder.php",
-		"/D/Luanvan/htdocs/API_luanvan/app/Http/Requests/UserUpdateRequest.php",
-		"/D/Luanvan/htdocs/API_luanvan/app/Http/Transformer/UserTransformer.php",
-		"/D/Luanvan/htdocs/API_luanvan/app/Http/Controllers/ServerController.php",
-		"/D/Luanvan/htdocs/API_luanvan/app/Services/QueryService.php",
-		"/D/Luanvan/htdocs/API_luanvan/app/Console/Commands/QueryWeatherStats.php",
-		"/D/Luanvan/htdocs/API_luanvan/app/Http/Controllers/QueryController.php",
-		"/D/Luanvan/htdocs/API_luanvan/app/Http/Transformer/WeatherStatTransformer.php"
+		"/D/Luanvan/htdocs/API_luanvan/app/Services/DuyService.php"
 	],
 	"find":
 	{
@@ -433,6 +434,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"sym",
+			"ignor",
+			"$this->",
+			"auth",
+			"$this->",
+			"author",
+			"auth",
 			"transaction",
 			"user",
 			";\n",
@@ -446,6 +454,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"Route::",
 			"product",
 			"transaction",
 			"category"
@@ -459,29 +468,93 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/Http/Middleware/TransformInput.php",
+					"file": "app/User.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1204,
+						"buffer_size": 1873,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								734,
-								734
+								469,
+								469
 							]
 						],
 						"settings":
 						{
-							"SL.27.region_keys":
+							"auto_complete": false,
+							"git_savvy.repo_path": "D:\\Luanvan\\htdocs\\RestfulAPI",
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/Providers/AuthServiceProvider.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 791,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								374,
+								374
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_savvy.repo_path": "D:\\Luanvan\\htdocs\\RestfulAPI",
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 234.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/Http/Controllers/Auth/RegisterController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2046,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2043,
+								276
+							]
+						],
+						"settings":
+						{
+							"SL.72.region_keys":
 							[
 							],
 							"auto_complete": false,
@@ -491,77 +564,42 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 253.0,
+						"translation.y": 1.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "composer.json",
+					"buffer": 3,
+					"file": "config/auth.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1698,
+						"buffer_size": 3283,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								530,
-								530
+								1309,
+								1309
 							]
 						],
 						"settings":
 						{
-							"auto_complete": true,
+							"auto_complete": false,
 							"git_savvy.repo_path": "D:\\Luanvan\\htdocs\\RestfulAPI",
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 324.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "package.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1172,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								64,
-								75
-							]
-						],
-						"settings":
-						{
-							"SL.39.region_keys":
-							[
-							],
-							"auto_complete": true,
-							"git_savvy.repo_path": "D:\\Luanvan\\htdocs\\RestfulAPI",
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -614,7 +652,7 @@
 	"project": "RESTfulAPI.sublime-project",
 	"replace":
 	{
-		"height": 50.0
+		"height": 70.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -623,6 +661,18 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"passport",
+				"vendor\\phpunit\\phpunit\\tests\\_files\\ClassWithAllPossibleReturnTypes.php"
+			],
+			[
+				"router routing",
+				"vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php"
+			],
+			[
+				"routing router",
+				"vendor\\symfony\\routing\\Router.php"
+			]
 		],
 		"width": 0.0
 	},
