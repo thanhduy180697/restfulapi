@@ -19,6 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home/my-tokens', 'HomeController@getTokens')->name('personal-tokens');
+Route::get('/home/my-clients', 'HomeController@getClients')->name('personal-clients');
+Route::get('/home/my-authorized-clients', 'HomeController@getAuthorizedClients')->name('authorized-clients');
+
+
 //Author
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');

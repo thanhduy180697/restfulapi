@@ -12,6 +12,8 @@ class SellerController extends ApiController
     {
        
         parent::__construct();
+        $this->middleware('scope:read-general')->only(['index']);
+        
     }
     /**
      * Display a listing of the resource.
