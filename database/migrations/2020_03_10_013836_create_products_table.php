@@ -3,6 +3,7 @@
 use App\Product;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Schema\softDeletes;
 use Illuminate\Database\Migrations\Migration;
 
 class CreateProductsTable extends Migration

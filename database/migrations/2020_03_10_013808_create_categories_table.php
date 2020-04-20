@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Schema\softDeletes;
 use Illuminate\Database\Migrations\Migration;
 
 class CreateCategoriesTable extends Migration

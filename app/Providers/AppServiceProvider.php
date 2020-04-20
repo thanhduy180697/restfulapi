@@ -55,6 +55,5 @@ class AppServiceProvider extends ServiceProvider
                 $product->save();
             }
         });
-
     }
 }
